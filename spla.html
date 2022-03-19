@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
+    <title>Sample A</title>
+  </head>
+  <body>
+    <a-scene
+      mindar-image="imageTargetSrc: /targets.mind;"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+    >
+      <!-- Assets -->
+      <a-assets>
+        <a-asset-item id="buildings" src="/assets/WTC.gltf"></a-asset-item>
+      </a-assets>
+
+      <!-- Camera -->
+      <a-camera
+        position="0 0 0"
+        look-controls="enabled: false"
+        cursor="fuse: false; rayOrigin: mouse;"
+        raycaster="far: 10000; objects: .clickable"
+      ></a-camera>
+
+      <!-- Entity -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model
+          src="#buildings"
+          position="0 0 0"
+          rotation=" 90 360 0"
+        ></a-gltf-model>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
